@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlinx.parcelize)
 }
 
 android {
@@ -10,7 +11,6 @@ android {
     buildFeatures{
         viewBinding = true
     }
-
 
     defaultConfig {
         applicationId = "ru.zatsoft.listview"
