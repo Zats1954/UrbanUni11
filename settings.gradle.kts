@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ListView"
+rootProject.name = "Parcelable"
 include(":app")
  

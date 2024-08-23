@@ -1,4 +1,4 @@
-package ru.zatsoft.listview
+package ru.zatsoft.parcelable
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -15,14 +15,14 @@ class MyDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val user = requireArguments().getParcelable<User>("user")
+        val person = requireArguments().getParcelable<Person>("user")
         val builder = AlertDialog.Builder(requireActivity())
         return builder
             .setTitle("Удаление пользователя")
-            .setMessage("Удаляем \"${user?.name}\" ?")
+            .setMessage("Удаляем \"${person?.name}\" ?")
             .setIcon(R.drawable.ic_remove)
             .setPositiveButton("Да") { dialog, ind ->
-                user?.let { removable.remove(it) }
+                person?.let { removable.remove(it) }
             }
             .setNegativeButton("Отмена", null)
             .create()

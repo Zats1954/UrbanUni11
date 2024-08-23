@@ -1,19 +1,18 @@
-package ru.zatsoft.listview
+package ru.zatsoft.parcelable
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import ru.zatsoft.listview.databinding.ActivityMainBinding
-
+import ru.zatsoft.parcelable.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), Removable {
     private lateinit var binding: ActivityMainBinding
     private lateinit var toolBar: Toolbar
-    private var list = mutableListOf<User>()
+    private var list = mutableListOf<Person>()
     private lateinit var listAdapter: ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,21 +25,28 @@ class MainActivity : AppCompatActivity(), Removable {
         listAdapter =ListAdapter(this, list)
         binding.listView.adapter = listAdapter
         binding.save.setOnClickListener {
-            val user = User(binding.edName.text.toString(),binding.edAge.text.toString().toInt())
-            list.add(user)
+            val person = Person(binding.edName.text.toString(),
+                                binding.edLastName.text.toString(),
+                                binding.edAddress.text.toString(),
+                                binding.edTelephon.text.toString()
+            )
+            list.add(person)
             listAdapter.notifyDataSetChanged()
             binding.edName.text.clear()
-            binding.edAge.text.clear()
+            binding.edLastName.text.clear()
+            binding.edAddress.text.clear()
+            binding.edTelephon.text.clear()
         }
         binding.listView.onItemClickListener =
             AdapterView.OnItemClickListener{ parent, view, position, id ->
                 val selectedUser = listAdapter.getItem(position)
-                val dialog = MyDialog()
-                val args = Bundle()
-                args.putParcelable("user", selectedUser)
-                dialog.arguments = args
-                dialog.show(supportFragmentManager,"custom")
-                listAdapter.notifyDataSetChanged()
+//                val dialog = MyDialog()
+                val intent = Intent(this, PersonActivity::class.java )
+                intent.putExtra("person", selectedUser)
+                 startActivity(intent)
+//                dialog.arguments = args
+//                dialog.show(supportFragmentManager,"custom")
+//                listAdapter.notifyDataSetChanged()
             }
     }
 
@@ -55,7 +61,7 @@ class MainActivity : AppCompatActivity(), Removable {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun remove(user: User) {
-        listAdapter.remove(user)
+    override fun remove(person: Person) {
+        listAdapter.remove(person)
     }
 }

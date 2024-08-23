@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,32 +26,56 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_goneMarginTop="50dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
+        app:layout_constraintBottom_toTopOf="@+id/save">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:layout_weight="2"
+                android:hint="@string/name" />
+
+            <EditText
+                android:id="@+id/edLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:layout_weight="3"
+                android:hint="@string/last_name" />
+        </LinearLayout>
 
         <EditText
-            android:id="@+id/edName"
-            android:layout_width="0dp"
+            android:id="@+id/edAddress"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
-            android:layout_weight="3"
-            android:hint="@string/user_name" />
+            android:layout_weight="2"
+            android:hint="@string/address"
+            android:minLines="3" />
 
         <EditText
-            android:id="@+id/edAge"
-            android:layout_width="0dp"
+            android:id="@+id/edTelephon"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
             android:layout_weight="1"
-            android:hint="@string/text_age" />
+            android:hint="@string/telephon" />
     </LinearLayout>
 
     <Button
@@ -61,14 +86,15 @@
         android:layout_marginTop="@dimen/margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutV" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginEnd="@dimen/side_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save" />

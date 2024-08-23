@@ -1,1 +1,1 @@
-ListView учебная пррграмма для UgbanUni
+Parcelable учебная пррграмма для UgbanUni

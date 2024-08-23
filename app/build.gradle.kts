@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.zatsoft.listview"
+    namespace = "ru.zatsoft.parcelable"
     compileSdk = 34
 
     buildFeatures{
@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "ru.zatsoft.listview"
+        applicationId = "ru.zatsoft.parcelable"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

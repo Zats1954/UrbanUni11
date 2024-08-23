@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">ListView</string>
+    <string name="app_name">Parcelable</string>
     <string name="toolbar_text">Каталог пользователей</string>
-    <string name="user_name">Имя пользователя</string>
-    <string name="text_age">Возраст</string>
+    <string name="name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="address">Адрес</string>
+    <string name="telephon">Телефон</string>
     <string name="exit">Выход</string>
     <string name="save">Сохранить</string>
+    <string name="back">Назад</string>
 </resources>
